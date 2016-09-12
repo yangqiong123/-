@@ -154,6 +154,9 @@ body {
 }
 
 /*---------------vip-------------------------*/
+.wrap-box{
+	width: 100%;
+}
 .wrap-box .f-list {
     width: 94%;
     margin: 0 auto;
@@ -185,12 +188,12 @@ body {
 }
 .wrap-box .f-list li .d-price {
     color: #de0000;
-    font-size: 1.4rem;
+    font-size: 14px;
     font-weight: bold;
 }
 .wrap-box .f-list li .o-price {
     color: #666666;
-    font-size: 1rem;
+    font-size: 10px
     margin-left: 8px;
 }
 /*-----------classification------------------*/
@@ -405,6 +408,302 @@ body {
 #sharebox .share-list li.s-xinlang a:before {
     background-position: -54px -24px;
 }
+
+.car-bar {
+    padding-top: 10px;
+    background-color: #fff;
+    position: relative;
+}
+.car-bar .car-wrap {
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    padding: 6px 0;
+    bottom: 0;
+    z-index: 1;
+    border-top: 1px solid #e0e0e0;
+    background-color: #f2f2f2;
+}
+#buyCar {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 10px;
+    padding: 6px;
+    width: 28px;
+    height: 28px;
+    background: url(../image/icon.png) no-repeat;
+    background-origin: content-box;
+    background-clip: content-box;
+    background-position: -2px -197px;
+    background-size: 216px 226px;
+}
+#buyCar span {
+    position: absolute;
+    right: -1px;
+    top: 4px;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    border-radius: 8px;
+    background-color: #ee3749;
+    color: #fff;
+}
+.car-bar .car-list {
+    float: right;
+    margin-right: 4%;
+    overflow: hidden;
+}
+.car-bar .car-list li {
+    float: left;
+    margin-left: 20px;
+}
+.car-bar .car-list li a.add-btn {
+    display: block;
+    margin: 10px auto;
+    width: 92px;
+    color: #fff;
+    background-color: #f29004;
+    text-align: center;
+    border-radius: 4px;
+    height: 28px;
+    line-height: 28px;
+}
+.car-bar .car-list li a.buy-btn {
+    display: block;
+    margin: 10px auto;
+    width: 92px;
+    color: #fff;
+    background-color: #ee3749;
+    text-align: center;
+    border-radius: 4px;
+    height: 28px;
+    line-height: 28px;
+}
+
+
+/*-------------register---------------*/
+section{
+	width:86%;
+	margin: 42px auto;
+}
+.input-group {
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.input-group input {
+    width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+    border: none;
+    height: 36px;
+    line-height: 36px;
+}
+.input-group.code-bar {
+    border: none;
+}
+.input-group .code-input {
+    width: 64%;
+    float: left;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.input-group .code-btn {
+    float: right;
+    width: 32%;
+    text-align: center;
+    background-color: #ea6c6c;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 4px;
+    height: 36px;
+    line-height: 36px;
+}
+.input-group.password-bar {
+    padding: 0 10px;
+    background-color: #fff;
+}
+.input-group.password-bar input:first-child {
+    border-bottom: 1px solid #e0e0e0;
+}
+.register-box {
+    margin-top: 80px;
+}
+.btn-default {
+    display: block;
+    color: #fff;
+    font-size: 1.6rem;
+    background-color: #f29004;
+    text-align: center;
+    border-radius: 4px;
+    height: 36px;
+    line-height: 36px;
+}
+
+/*------------login-------------------*/
+.logo{
+	width: 28%;
+	margin: 5% auto;
+}
+.register-btn {
+    position: absolute;
+    right: 7%;
+    top: 10px;
+    font-size: 16px;
+}
+.forget-box {
+    margin: 10px auto;
+    text-align: right;
+    padding-bottom: 5%;
+}
+.forget-box a {
+    color: #f29004;
+    font-size: 12px;
+}
+
+.edit-bar {
+    background-color: #fff;
+    text-align: right;
+    height: 32px;
+    line-height: 32px;
+    padding-top: 10px;
+    padding-right: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+.edit-bar span {
+    display: block;
+    margin: 0 auto;
+    width: 60px;
+    background-color: #f29004;
+    text-align: center;
+    border-radius: 4px;
+    height: 28px;
+    line-height: 28px;
+    color: #fff;
+    float: right;
+}
+.list{
+	padding-bottom:32px;
+}
+.list li{
+	padding: 10px;
+	border-bottom: 1px solid #E0E0E0;
+	height:100px;
+	position: relative;
+}
+.list li .delete{
+	position:absolute;
+	bottom:10px;
+	right: 12px;
+	width:30px;
+	height:20px;
+	line-height:20px;
+	border-radius:4px;
+	background-color:#ee4147;
+	color: #fff;
+	text-align: center;
+}
+.list li .list-items{
+	float: left;
+	width:10%;
+	height: 100%;
+}
+.list li .list-items span{
+	display: block;
+	width: 24px;
+	height: 24px;
+	border:1px solid rgb(109,177,11);
+	margin: 40px auto;
+	border-radius: 13px;
+	background-image: url(../image/gou.png);
+	background-repeat: no-repeat;
+	background-position: 2px 7px;
+}
+.changecolor{
+	background-color: rgb(109,177,11);
+}
+.list li .list-img {
+	width:25%;
+	height:100%;
+	float: left;
+	margin-right:10px;
+}
+.list li .list-img img{
+	width:100%;
+	height: 100%;
+}
+.list li .list-content{
+	float: left;
+	height: 100%;
+	width:62%;
+}
+.list li .list-content h2 {
+	font-size: 14px;
+	line-height: 20px;
+	height:40px;
+	overflow: hidden;
+}
+.list li .list-content .list-price .list-nowprice{
+	color: #fa6400;
+	font-size: 20px;
+	margin-right: 10px;
+}
+.list li .list-content .list-price .list-oldprice{
+	font-size: 14px;
+}
+.list li .list-content .list-num {
+	display: block;
+	outline: none;
+	border:1px solid #E0E0E0;
+	width:40px;
+	height:26px;
+	text-align: center;
+}
+.p-car{
+	padding: 0 2%;
+	width: 96%;
+	height:50px;
+	position: fixed;
+	bottom:50px;
+	background:#e0e0e0;
+}
+.p-car .total-price{
+	float: left;
+	font-size:16px;
+	line-height: 50px;
+}
+.p-car .total-price span{
+	color: #f29004;
+}
+.p-car .check{
+	float: right;
+	width:100px ;
+	height:36px ;
+	margin-top:7px;
+	background-color: #ee4147;
+	color: #fff;
+	text-align: center;
+	line-height: 36px;
+	font-size:16px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

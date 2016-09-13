@@ -588,6 +588,7 @@ section{
     color: #fff;
     float: right;
 }
+/*-------购物车-------------*/
 .list{
 	padding-bottom:32px;
 }
@@ -693,13 +694,116 @@ section{
 	font-size:16px;
 }
 
+#hidden {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+#hidden .hiddenbox{
+	width: 80%;
+	height: 150px;
+	margin: 70% auto;
+	background-color: #fff;
+	z-index: 20;
+}
+#hidden .hiddenbox p{
+	width: 100%;
+	height:35px;
+	text-align: center;
+	line-height:70px;
+	font-size:16px;
+	
+}
+#hidden .hiddenbox div{
+	width:80px;
+	height:40px;
+	background-color:#EA6C6C;
+	border-radius:8px;
+	float: left;
+	margin-top: 30px;
+	text-align: center;
+	line-height: 40px;
+	font-size:16px;
+	color:#fff;
+}
+#hidden .hiddenbox .sure{
+	margin-left:60px;
+	margin-right:30px;
+}
+/*------------个人资料----------------*/
+.baseinfo {
+  margin-top: 3%;
+  padding-left: 3%;
+  background-color: #feffff;
+  border-top: 1px solid #eaebeb;
+  border-bottom: 1px solid #eaebeb;
+}
+.baseinfo a {
+  display: block;
+  font-size: 1.7rem;
+  color: #000;
+  padding: 2% 3% 2% 0;
+  border-bottom: 1px solid #eaebeb;
+}
+.baseinfo a span {
+  vertical-align: middle;
+}
+.baseinfo a:last-child {
+  border: 0;
+}
+.baseinfo a:before {
+  content: '';
+  width: 24px;
+  height: 22px;
+  display: inline-block;
+  margin: 0.3% 0;
+  margin-right: 3%;
+  background: url(../image/icon.png) -1% center no-repeat;
+  background-size: 750%;
+  vertical-align: middle;
+}
+.baseinfo a:nth-of-type(1):before {
+	background-position: -98px 2px;
+}
+.baseinfo a:nth-of-type(2):before {
+  background-position: -58px 2px;
+}
+.baseinfo a:nth-of-type(3):before {
+  background-position: -78px 2px;
+}
+.baseinfo a:nth-of-type(4):before {
+  background-position: -138px 3px;
+}
+.baseinfo a:nth-of-type(5):before {
+  background-position: -118px 2px;
+}
+.baseinfo a:nth-of-type(6):before {
+  background-position: -39px 3px;
+}
+.baseinfo a:after {
+  content: '';
+  width: 5%;
+  height: 2.5rem;
+  display: inline-block;
+	background: url(../image/mine_01.png) right center no-repeat;
+  background-size: 50%;
+  float: right;
+}
 
-
-
-
-
-
-
+.set {
+  margin-bottom: 2%;
+}
+.set a:nth-of-type(1):before {
+  background-position: -100px -65px;
+}
+.set a:nth-of-type(2):before {
+  background-position: -100px -85px;
+}
 
 
 

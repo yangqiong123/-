@@ -43,9 +43,15 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 			templateUrl: 'html/car.html',
 			controller: 'carCtrl'
 		})
+		.state('index.mine', {
+			url: '/mine',
+			templateUrl: 'html/mine.html',
+			controller: 'mineCtrl'
+		})
 }]);
 //最外层的index页面控制器
 app.controller('indexCtrl', ['$scope', '$cookieStore', '$rootScope', function($scope, $cookieStore, $rootScope) {
+	$('body').css('backgroundColor', '#f2f2f2');
 	//创建一个全局对象，将商品存入对象中，进入购物车时再进行渲染商品列表
 	$rootScope.goodnum = 0;
 	$rootScope.goodlistObj = {
@@ -65,17 +71,13 @@ app.controller('indexCtrl', ['$scope', '$cookieStore', '$rootScope', function($s
 			window.location.href = '#/login'
 		}
 	};
-	$scope.mine = function() {
-		if(localhostuser != null) {
-			//window.location.href = ''
-		} else {
-			console.log(localhostuser)
-			window.location.href = '#/login'
-		}
-	};
 }]);
 //首页控制器
 app.controller('homeCtrl', ['$scope', '$http', function($scope, $http) {
+	//进入路由重置样式
+	$('body').css('backgroundColor', '#f2f2f2');
+	$('#toTop').css('display', 'block');
+	$('.icon-4').addClass('active').siblings('li').removeClass('active');
 	//利用swiper插件，实现轮播图
 	var swiper = new Swiper('.swiper-container', {
 		pagination: '.swiper-pagination',
@@ -89,7 +91,7 @@ app.controller('homeCtrl', ['$scope', '$http', function($scope, $http) {
 	});
 	//发送ajsx请求，拿到数据并把数据存入定义的变量中，并在页面中渲染数据
 	$scope.ajax = function() {
-		$http.get('http://localhost:8765/home').success(function(data) {
+		$http.get('http://10.16.155.48:8765/home').success(function(data) {
 			//console.log(data);
 			$scope.contents = data.datelist
 		})
@@ -98,6 +100,10 @@ app.controller('homeCtrl', ['$scope', '$http', function($scope, $http) {
 }]);
 //会员控制器
 app.controller('vipCtrl', ['$scope', '$http', function($scope, $http) {
+	//进入路由重置样式
+	$('body').css('backgroundColor', '#f2f2f2');
+	$('#toTop').css('display', 'block');
+	$('.icon-3').addClass('active').siblings('li').removeClass('active');
 	//利用swiper插件，实现轮播图
 	var swiper = new Swiper('.swiper-container', {
 		pagination: '.swiper-pagination',
@@ -109,7 +115,7 @@ app.controller('vipCtrl', ['$scope', '$http', function($scope, $http) {
 	});
 	//发送ajsx请求，拿到数据并把数据存入定义的变量中，并在页面中渲染数据
 	$scope.ajax = function() {
-		$http.get('http://localhost:8765/vip').success(function(data) {
+		$http.get('http://10.16.155.48:8765/vip').success(function(data) {
 			//console.log(data);
 			$scope.contents = data.datelist
 		})
@@ -118,9 +124,13 @@ app.controller('vipCtrl', ['$scope', '$http', function($scope, $http) {
 }]);
 //分类控制器
 app.controller('classificationCtrl', ['$scope', '$http', function($scope, $http) {
+	//重置样式
+	$('#toTop').css('display', 'block');
+	$('body').css('backgroundColor', '#f2f2f2');
+	$('.icon-2').addClass('active').siblings('li').removeClass('active');
 	//发送ajsx请求，拿到数据并把数据存入定义的变量中，并在页面中渲染数据
 	$scope.ajax = function() {
-		$http.get('http://localhost:8765/classification').success(function(data) {
+		$http.get('http://10.16.155.48:8765/classification').success(function(data) {
 			//console.log(data);
 			$scope.contents = data.datelist
 		})
@@ -134,9 +144,12 @@ app.controller('classificationCtrl', ['$scope', '$http', function($scope, $http)
 app.controller('infoCtrl', ['$scope', '$stateParams', '$http', '$cookieStore', '$rootScope', function($scope, $stateParams, $http, $cookieStore, $rootScope) {
 	//console.log($stateParams.mun)
 	//$scope.id = $stateParams.mun;
+	//重置样式
+	$('#toTop').css('display', 'block');
+	$('body').css('backgroundColor', '#f2f2f2');
 	$scope.ajax = function() {
 		//发送ajsx请求，拿到数据并把数据存入定义的变量中，并在页面中渲染数据
-		$http.get('http://localhost:8765/info?id=' + $stateParams.mun).success(function(data) {
+		$http.get('http://10.16.155.48:8765/info?id=' + $stateParams.mun).success(function(data) {
 			//console.log(data);
 			$scope.images = data.images
 			$scope.imgsrc = data.imgsrc;
@@ -178,6 +191,8 @@ app.controller('infoCtrl', ['$scope', '$stateParams', '$http', '$cookieStore', '
 //注册页面控制器
 app.controller('registerCtrl', ['$scope', '$cookieStore', function($scope, $cookieStore) {
 	//console.log($cookieStore)
+	//重置样式
+	$('body').css('backgroundColor', '#f2f2f2');
 	$scope.register = function() {
 		if(!(/^1[3|4|5|7|8]\d{9}$/.test($scope.phone))) {
 			alert('手机号码有误');
@@ -204,6 +219,8 @@ app.controller('registerCtrl', ['$scope', '$cookieStore', function($scope, $cook
 }]);
 //登录页面控制器
 app.controller('loginCtrl', ['$scope', '$cookieStore', function($scope, $cookieStore) {
+	//重置样式
+	$('body').css('backgroundColor', '#f2f2f2');
 	$scope.login = function() {
 		//判断有没有注册页面存的cookie， 得到之前注册时的帐号密码（从cookie：user中获取）
 		var user = $cookieStore.get('user');
@@ -235,14 +252,29 @@ app.controller('carCtrl', ['$scope', '$cookieStore', '$rootScope', function($sco
 		//判断若没有登录则进入登录页面
 		window.location.href = '#/login';
 	} else {
-		$scope.goodinlist = $rootScope.goodlistObj;
-		//console.log($scope.goodinlist);
+		//重置样式
 		$('body').css('backgroundColor', '#fff');
 		$('#toTop').css('display', 'none');
+		$('.icon-5').addClass('active').siblings('li').removeClass('active');
+		$scope.goodinlist = $rootScope.goodlistObj;
+		//console.log($scope.goodinlist);
 	}
-	$scope.total = 0;
+}]);
+//个人信息控制器
+app.controller('mineCtrl', ['$scope', '$cookieStore', '$rootScope', function($scope, $cookieStore, $rootScope) {
+	var localhostuser = $cookieStore.get('localhostuser');
+	if(localhostuser == null) {
+		//判断若没有登录则进入登录页面
+		window.location.href = '#/login';
+	} else {
+		//重置样式
+		$('#toTop').css('display', 'none');
+		$('body').css('backgroundColor', '#f2f2f2');
+		$('.icon-1').addClass('active').siblings('li').removeClass('active');
+	}
 
 }]);
+
 //自定义过滤器，将字符串中的&yen;转换为￥字符
 app.filter('tra', function() {
 	return function(val) {
@@ -254,17 +286,6 @@ app.filter('tra', function() {
 	}
 });
 //定义directive，操作DOM节点 利用zepto的方法
-app.directive('changeclass', function() {
-	return {
-		restrict: 'EMAC',
-		link: function(scope, ele, attr) {
-			//console.log(ele)
-			ele.find('li').bind('click', function() {
-				$(this).addClass('active').siblings('li').removeClass('active');
-			});
-		}
-	}
-});
 app.directive('infochange', function() {
 	return {
 		restrict: 'EMAC',
@@ -296,17 +317,21 @@ app.directive('choose', function() {
 			if(scope.$last) {
 				$('.list-items').bind('click', function() {
 					var totalnum = 0;
-					var total = 0; 
+					var total = 0;
 					$(this).find('span').toggleClass('changecolor');
+					//对选中的商品进行遍历，然后把数量和综合进行乘法和加法的运算
 					for(var i = 0; i < $('.changecolor').length; i++) {
+						//得到总共选的商品的数量
 						totalnum += Number($('.changecolor').eq(i).parents('.list-items').siblings('.list-content').find('input').val());
+						//用每个商品的数量乘以自身的价格，在进行加法
 						total += $('.changecolor').eq(i).parents('.list-items').siblings('.list-content').find('.list-price .list-nowprice span').html() * $('.changecolor').eq(i).parents('.list-items').siblings('.list-content').find('input').val();
 					}
 					//console.log(totalnum,total);
 					$('.p-car .total-price span span').html(total);
 					$('.p-car .check span').html(totalnum);
 					/*scope.total = total;
-					scope.totalnum =totalnum;*/
+					scope.totalnum =totalnum;
+					scope.$apply()*/
 				});
 			}
 		}
@@ -320,16 +345,17 @@ app.directive('total', function() {
 			if(scope.$last) {
 				$('.list-content input').bind('change', function() {
 					var totalnum = 0;
-					var total = 0; 
+					var total = 0;
 					for(var i = 0; i < $('.changecolor').length; i++) {
 						totalnum += Number($('.changecolor').eq(i).parents('.list-items').siblings('.list-content').find('input').val());
 						total += $('.changecolor').eq(i).parents('.list-items').siblings('.list-content').find('.list-price .list-nowprice span').html() * $('.changecolor').eq(i).parents('.list-items').siblings('.list-content').find('input').val();
 					}
-					//console.log(totalnum,total);
 					$('.p-car .total-price span span').html(total);
 					$('.p-car .check span').html(totalnum);
 					/*scope.total = total;
-					scope.totalnum =totalnum;*/
+					scope.totalnum =totalnum;
+					scope.$apply(scope.total)
+					console.log(scope)*/
 				});
 			}
 		}
@@ -341,18 +367,29 @@ app.directive('delete', function() {
 		link: function(scope, ele, attr) {
 			//当数据ng-repeat渲染完数据后在绑定事件（此处为angular的坑）
 			if(scope.$last) {
+				var ele;
 				$('.delete').bind('click', function() {
-					$(this).parent().remove();
-					var totalnum = 0;
-					var total = 0; 
-					for(var i = 0; i < $('.changecolor').length; i++) {
-						totalnum += Number($('.changecolor').eq(i).parents('.list-items').siblings('.list-content').find('input').val());
-						total += $('.changecolor').eq(i).parents('.list-items').siblings('.list-content').find('.list-price .list-nowprice span').html() * $('.changecolor').eq(i).parents('.list-items').siblings('.list-content').find('input').val();
-					}
-					//console.log(totalnum,total);
-					$('.p-car .total-price span span').html(total);
-					$('.p-car .check span').html(totalnum);
-					
+					ele = $(this);
+					$('#hidden').css('display', 'block');
+					$('.sure').bind('click', function() {
+						$('#hidden').css('display', 'none');
+						ele.parent().remove();
+						var totalnum = 0;
+						var total = 0;
+						for(var i = 0; i < $('.changecolor').length; i++) {
+							totalnum += Number($('.changecolor').eq(i).parents('.list-items').siblings('.list-content').find('input').val());
+							total += $('.changecolor').eq(i).parents('.list-items').siblings('.list-content').find('.list-price .list-nowprice span').html() * $('.changecolor').eq(i).parents('.list-items').siblings('.list-content').find('input').val();
+						}
+						$('.p-car .total-price span span').html(total);
+						$('.p-car .check span').html(totalnum);
+					});
+					$('.cannel').bind('click', function() {
+						$('#hidden').css('display', 'none');
+						return;
+					});
+					/*scope.total = total;
+					scope.totalnum = totalnum;
+					scope.$apply();*/
 				});
 			}
 		}

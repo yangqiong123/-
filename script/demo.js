@@ -123,7 +123,7 @@ app.controller('vipCtrl', ['$scope', '$http', function($scope, $http) {
 	$scope.ajax();
 }]);
 //分类控制器
-app.controller('classificationCtrl', ['$scope', '$http', function($scope, $http) {
+app.controller('classificationCtrl', ['$scope', '$http', '$filter', function($scope, $http, $filter) {
 	//重置样式
 	$('#toTop').css('display', 'block');
 	$('body').css('backgroundColor', '#f2f2f2');
@@ -132,12 +132,26 @@ app.controller('classificationCtrl', ['$scope', '$http', function($scope, $http)
 	$scope.ajax = function() {
 		$http.get('http://10.16.155.48:8765/classification').success(function(data) {
 			//console.log(data);
-			$scope.contents = data.datelist
+			$scope.contents = data.datelist;
+			$scope.contents.forEach(function(data){
+				data.dPrice = Number(data.dPrice)
+			});
+			//console.log($scope.contents)
 		})
 	};
 	$scope.ajax();
 	$scope.show = function() {
 		$scope.isShow = !$scope.isShow;
+	}
+	$scope.orderby = function(){
+		$('.price').css('color','#f39612');
+		if($('.price span').html()=='价格从高到低'){
+			$scope.contents = $filter('orderBy')($scope.contents,'dPrice','true');
+			$('.price span').html('价格从低到高')
+		}else{
+			$scope.contents = $filter('orderBy')($scope.contents,'dPrice');
+			$('.price span').html('价格从高到低')
+		}
 	}
 }]);
 //页面详情控制器
